@@ -1,0 +1,341 @@
+/* =====================================================
+   Cliente · CSS
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo y fuente */
+
+body {
+    background-color: #e8e9ec;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    padding: 2em;
+}
+
+
+/* ---------- Barra superior: cerrar sesión + saludo ---------- */
+
+.cliente-barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1em;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto 1.5em;
+}
+
+.cliente-saludo {
+    color: #6b6b6b;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.boton__icono {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+.cerrarSession {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.6em;
+}
+
+/* El boton es el <a>, con el mismo estilo que .boton--cerrar de PanelAdmin.css */
+
+.cerrarSession a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7em 1.4em;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cerrarSession a:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+
+
+/* ---------- Tarjeta  ---------- */
+
+.rutina {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+    max-width: 900px;
+    margin: 0 auto 3em;
+    background-color: #f4f5f7;
+    border-radius: 16px;
+    padding: 2em 2.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+/* ---------- Encabezado: botón volver + título a la izquierda, nombre a la derecha ---------- */
+
+.leer-rutina__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+
+.leer-rutina__titulo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+
+.leer-rutina__volver {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+
+.leer-rutina__titulo {
+    font-size: 22px;
+    color: #2f2f2f;
+}
+
+/* El nombre de la rutina se ve igual que el input "Nombre" del instructor */
+
+.Nombre-rutina {
+    width: min(320px, 100%);
+}
+
+.nombre-rutina__texto {
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    background-color: #ffffff;
+    font-size: 15px;
+    color: #2f2f2f;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- Descripción ---------- */
+
+.leer-rutina__campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.leer-rutina__label {
+    font-style: italic;
+    color: #6b6b6b;
+}
+
+/* La descripción se ve igual que el textarea del instructor */
+
+.descripcion-rutina__texto {
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    border-radius: 10px;
+    min-height: 100px;
+    padding: 0.9em 1em;
+    font-size: 15px;
+    color: #2f2f2f;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- Tarjeta gris con la tabla de ejercicios (igual que .dia-card) ---------- */
+
+.dia-card {
+    background-color: #eceef1;
+    border-radius: 12px;
+    padding: 1.4em;
+}
+
+/* Permite deslizar la tabla de costado si no entra (por ejemplo al mostrar el detalle) */
+
+.dia-card__scroll {
+    overflow-x: auto;
+}
+
+.dia-card__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f4f5f7;
+    border: 1px solid #2f3548;
+}
+
+.dia-card__tabla th,
+.dia-card__tabla td {
+    border: 1px solid #2f3548;
+    padding: 0.9em 1em;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: middle;
+    color: #2f2f2f;
+    background-color: #f4f5f7;
+}
+
+.dia-card__tabla th {
+    font-weight: bold;
+}
+
+/* El título "Ejercicio" y su botón +/− quedan siempre en la misma línea */
+
+.dia-card__tabla th:first-child {
+    white-space: nowrap;
+}
+
+/* La primera columna (nombre del ejercicio) va en negrita, como en el instructor */
+
+.dia-card__tabla td:first-child {
+    font-weight: bold;
+}
+
+.dia-card__tabla td img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Botón circular verde "+ / −" (mismo estilo que el botón de expandir del instructor) */
+
+.dia-card__tabla th button {
+    background-color: #7ed957;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.dia-card__tabla th button:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+
+/* Las columnas extra están ocultas por defecto */
+.extra {
+    display: none;
+}
+
+/* Cuando la tabla tiene la clase "mostrar-detalle", se muestran */
+table.mostrar-detalle .extra {
+    display: table-cell;
+}
+
+/* Con el detalle abierto hay 7 columnas: se les da más ancho y se desliza de costado */
+table.mostrar-detalle {
+    min-width: 760px;
+}
+
+
+/* ---------- Responsive ---------- */
+
+/* Tablet: la tabla tiene varias columnas fijas, el contenedor .dia-card__scroll */
+/* permite deslizarla de costado en vez de romper el diseño. */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 1.2em;
+    }
+
+    .rutina {
+        padding: 1.5em;
+    }
+
+    .dia-card__tabla {
+        min-width: 500px;
+    }
+
+    table.mostrar-detalle {
+        min-width: 760px;
+    }
+}
+
+/* Celular: el encabezado pasa de fila a columna */
+
+@media (max-width: 640px) {
+
+    body {
+        padding: 0.8em;
+    }
+
+    .rutina {
+        padding: 1.2em 1em;
+        margin-bottom: 1.5em;
+    }
+
+    .cliente-barra {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    /* Igual que PanelAdmin en celular: el boton queda centrado */
+    .cerrarSession {
+        justify-content: center;
+    }
+
+    .leer-rutina__header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8em;
+    }
+
+    .leer-rutina__titulo-grupo {
+        justify-content: center;
+    }
+
+    .Nombre-rutina {
+        width: 100%;
+    }
+
+    .dia-card {
+        padding: 1em;
+    }
+}
+
+.fila-rutina td {
+    background-color: #2f2f2f;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 10px 12px;
+}
+ 
+/* Fila de título de cada día (Lunes, Martes...) */
+.fila-dia td {
+    background-color: #e4e4e4;
+    font-style: italic;
+    font-weight: bold;
+}
+ 

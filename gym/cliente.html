@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!-- Esta línea declara el tipo de documento y la versión de HTML que se está utilizando. En este caso HTML5. Ayuda a los navegadores a renderizar el contenido correctamente.-->
+<html lang="es"> <!-- Esta línea especifica el idioma del documento -->
+
+<head> <!-- Acá empeiza el encabezado del documento --> <!-- como que empeiza???? *Facundo Avilés-->
+    <meta charset="UTF-8"> <!-- Esta línea especifica el conjunto de caracteres que se va a utilizar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Esta línea especifica el viewport para dispositivos móviles -->
+    <link rel="stylesheet" href="./css/cliente.css">
+    <!-- Esta línea especifica el archivo de estilo CSS, en este caso se llama style.css -->
+    <title>Sesion del usuario</title> <!-- Esta línea especifica el título del documento -->
+</head> <!-- Acá termina el encabezado del documento -->
+
+<body> <!-- Acá empieza el cuerpo del documento -->
+    <p>Hola cliente :3, esta es tu rutina</p> <!-- Un mensaje de bienvenida :3 -->
+    <div class="cerrarSession">
+    <a href="./php/logout.php"> <!-- Un enlace para cerrar sesión; llama al logout.php para que lo devuelva al index-->
+        <svg class="boton__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            //Esto es el "path" que sirve para dibujar el logo de cerrar sesion sin necesidad de una imagen
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M16 17l5-5-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21 12H9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Cerrar sesión</a> <!-- Texto del botón de cerrar sesión -->
+    </div>
+    <section class="rutina">
+
+        <div class="leer-rutina__header">
+            <div class="leer-rutina__titulo-grupo">
+                <h2 class="leer-rutina__titulo">Rutina</h2>
+            </div>
+        </div> <!-- cierra leer-rutina__header -->
+
+        <table id="tablaRutina">
+            <thead>
+                <tr>
+                    <th name="">
+                        Ejercicio
+                        <button id="btnToggle" type="button" aria-expanded="false" title="Mostrar detalle">+</button>
+                    </th>
+                    <th class="extra" name="">Imagen</th>
+                    <th class="extra" name="">Descripción ejercicio</th>
+                    <th class="extra" name="">Notas adicionales</th>
+                    <th name="">Series</th>
+                    <th name="">Repeticiones</th>
+                    <th name="">Notas</th>
+                </tr>
+            </thead>
+            <!-- El JS llena este tbody usando el id "tablaEjercicios" -->
+            <tbody id="tablaEjercicios"></tbody>
+        </table>
+    </section> <!-- cierra section.rutina -->
+
+    <script src="./js/cliente.js"></script>
+    <!--Esto hace referencia al archivo JavaScript para que la logica funcione de manera correcta, debe de ir si o si al final dl body-->
+</body><!-- cierra la etiqueta body -->
+
+</html>

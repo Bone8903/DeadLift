@@ -1,0 +1,192 @@
+/* Eliminar configuracion por defecto */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo y fuente */
+
+body {
+    background-color: #f4f5f7;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ 
+/* banner */
+
+.banner {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner__img {
+    width: 100%;
+    display: flex;
+    object-fit: cover;
+}
+
+#div {
+background-color: #0053fa;
+color: red;
+}
+
+/* botones */
+
+.opciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    flex-wrap: wrap;
+    padding: 4em;
+}
+
+.boton {
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.9em 2.5em;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    
+}
+
+/* El estilo que cambia cuando pasa el mouse por arriba de un botón*/
+.boton:hover {
+    background-color: aquamarine;
+    color:#636363;
+}
+
+
+/* espacio de arriba */
+
+.top {
+    height: 6em;
+}
+
+
+#logo {
+    display: flex;
+    position: absolute;
+    height: 90px;
+    bottom: 1px;
+    right: 25px;
+    padding: 20px;
+    opacity: 90%;
+}
+
+
+
+
+
+
+/* MARQUEE :3*/
+
+.marquee {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.marquee--bottom {
+    bottom: 0;
+}
+
+.marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 15s linear infinite;
+}
+
+.marquee--top .marquee__img {
+    height: 90px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.marquee__group {
+    display: flex;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+
+/* MARQUEE 2 :O*/
+
+.marquee--top {
+    top: 0;
+}
+
+.marquee--top .marquee__track {
+    animation-direction: reverse;
+}
+
+
+
+
+/* ---------- Responsive ---------- */
+
+/* Tablet: bajamos un poco el aire entre botones y el padding      */
+/* general para que el logo y los botones no queden tan sueltos.   */
+
+@media (max-width: 900px) {
+
+    .opciones {
+        gap: 2em;
+        padding: 3em 2em;
+    }
+
+    #logo {
+        height: 70px;
+    }
+}
+
+/* Celular: los botones "Registrarse" / "Inicio de sesion" pasan a */
+/* apilarse en columna y ocupar todo el ancho, en vez de quedar en */
+/* fila con flex-wrap. El logo se achica para no tapar contenido.  */
+
+@media (max-width: 640px) {
+
+    .top {
+        height: 4em;
+    }
+
+    .opciones {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1em;
+        padding: 2em 1.5em;
+    }
+
+    .boton {
+        width: 100%;
+        text-align: center;
+        padding: 0.8em 1.5em;
+        font-size: 16px;
+    }
+
+    #logo {
+        position: static;
+        display: block;
+        margin: 1em auto 0;
+        height: 60px;
+        opacity: 100%;
+    }
+}

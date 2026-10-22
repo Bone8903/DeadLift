@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loguearse</title>
+    <link rel="stylesheet" href="./css/loguearse.css">
+</head>
+
+<body>
+
+    <form id="loguearse">
+        <div id="contenedor">
+
+            <!-- MARQUEE -->
+
+            <!--Estas son las animaciones, el gif se llama vector pero en java se llama marquee y es diferenciado en diferentes grupos, el group1 y group2, o arriba y abajo-->
+            <div class="marquee marquee--bottom">
+                <div class="marquee__track" id="marqueeTrack">
+                    <div class="marquee__group" id="marqueeGroup1"></div>
+                    <div class="marquee__group" id="marqueeGroup2"></div>
+                </div>
+            </div>
+            <!-- MARQUEE -->
+            <!-- Aqui es donde van los campos del formulario-->
+            <div id="campos">
+                <div class="campo-grupo">
+                    <label class="campo" id="labelMail" for="Mail"></label>
+                    <input type="email" name="Mail" id="Mail" required>
+                </div>
+
+                <div class="campo-grupo">
+                    <label class="campo" id="labelPassword" for="Contraseña"></label>
+                    <input type="password" name="Contraseña" id="Contraseña" required>
+                </div>
+                
+                <input type="submit" class="boton" value="Iniciar Sesión">
+                
+                <a href="./php/volver.php" class="boton">Volver</a>
+                
+                <!-- MARQUEE -->
+                <div class="marquee marquee--top">
+                    <div class="marquee__track" id="marqueeTrackTop">
+                        <div class="marquee__group" id="marqueeGroup3"></div>
+                        <div class="marquee__group" id="marqueeGroup4"></div>
+                    </div>
+                </div>
+                <!-- MARQUEE -->
+            </div>
+
+    </form>
+
+
+
+    <div id="div"></div>
+
+    <script src="./js/loguearse.js"></script>
+</body>
+
+</html>

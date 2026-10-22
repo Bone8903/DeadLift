@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesion del instructor</title>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/instructor.css">
+    <link rel="stylesheet" href="./css/rutinasCreadas.css"> <!-- estilos de la rutina que se despliega en "Rutinas creadas" -->
+</head>
+ 
+<body>
+    <div class="cerrarSession">
+    <a href="./php/logout.php">
+        <svg class="boton__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            //Esto es el "path" que sirve para dibujar el logo de cerrar sesion sin necesidad de una imagen
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M16 17l5-5-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M21 12H9" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Cerrar sesión</a>
+    </div>
+ 
+ 
+<section class="seccion-ejercicio">
+ 
+    <form id="crearEjercicio" class="crear-ejercicio">
+ 
+        <div class="crear-ejercicio__main">
+ 
+            <div class="crear-ejercicio__header">
+                <div class="crear-ejercicio__titulo-grupo">
+                    <button type="button" class="crear-ejercicio__volver" aria-label="Volver">&#8592;</button>
+                    <h2 class="crear-ejercicio__titulo">Ejercicio</h2>
+                </div>
+ 
+<!-- el form que recibe el nombre, descripcion e imagen del ejercicio. -->
+                
+<!-- el nombre -->
+                <label for="nombre" class="sr-only">Nombre del ejercicio</label>
+                <input type="text" name="Nombre" id="Nombre" placeholder="Nombre"
+                    class="crear-ejercicio__input-nombre">
+            </div>
+ 
+<!-- la descripcion -->
+            <div class="crear-ejercicio__campo">
+                <label for="descripcion_rutina" class="crear-ejercicio__label">Descripcion</label>
+                <textarea name="Descripcion_ejercicio" id="Descripcion_ejercicio" class="crear-ejercicio__textarea"></textarea>
+            </div>
+ 
+            <div class="crear-ejercicio__campo">
+                <span class="crear-ejercicio__label">Músculo trabajado</span>
+ 
+                <div class="tag-list">
+ 
+ 
+                    <!-- El JS dibuja aquí los músculos que hay en la tabla musculos -->
+                    <div id="listaMusculos" class="tag-list"></div>
+                       
+                   <div class="grupo-agregar">
+    <button type="button" class="btn-agregar">
+        <span class="btn-agregar__icono">+</span> Agregar
+    </button>
+ 
+    <!-- Las <option> las agrega instructor.js con un forEach sobre el arreglo "musculos" de musculo.js -->
+    <select id="nuevoMusculo" class="oculto"></select>
+    <button type="button" id="btnGuardarMusculo" class="oculto">Añadir</button>
+</div>
+                </div>
+ 
+                <!-- Id del músculo elegido: viaja con el formulario como "id_musculo" -->
+                <input type="hidden" name="id_musculo" id="id_musculo" value="">
+ 
+            </div>
+ 
+            <div class="crear-ejercicio__campo">
+                <label for="notas" class="crear-ejercicio__label">Notas adicionales</label>
+                <textarea name="Nota_adicional" id="Nota_adicional" class="crear-ejercicio__textarea"></textarea>
+            </div>
+ 
+        </div>
+ 
+        <aside class="crear-ejercicio__sidebar">
+ 
+            <div class="crear-ejercicio__sidebar-contenido">
+ 
+                <h3 class="crear-ejercicio__sidebar-titulo">Adjuntar Multimedia</h3>
+ 
+<!-- el input de tipo file es para subir la imagen del ejercicio. -->
+                <div class="upload">
+                    <span class="upload__label">Buscar</span>
+ 
+                    <label for="imagen" class="upload__box upload__box--buscar">
+                        <svg class="upload__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" aria-hidden="true">
+                            <path
+                                d="M20.5 12.5 12.9 20a4.5 4.5 0 0 1-6.4-6.4l8.5-8.5a3 3 0 0 1 4.2 4.2l-8.4 8.4a1.5 1.5 0 0 1-2.1-2.1l7.1-7.1" />
+                        </svg>
+                    </label>
+                    <input type="file" name="imagen" id="imagen" accept="image/jpeg,image/png,image/gif,image/webp"
+                        class="upload__input">
+                </div>
+ 
+ 
+                <div class="crear-ejercicio__preview contenedor-img">
+                    <img id="salida" src="" alt="" style="display:none">
+                </div>
+ 
+            </div>
+ 
+            <div class="crear-ejercicio__acciones">
+                <input type="submit" value="Publicar" class="boton">
+            </div>
+ 
+        </aside>
+ 
+    </form>
+ 
+    <h3 class="ejercicios-lista__titulo">Ejercicios creados</h3>
+ 
+    <div class="ejercicios-lista" id="tablaEjercicios"></div>
+ 
+</section>
+ 
+ 
+<section class="seccion-rutina">
+ 
+    <form id="crearRutina" class="crear-rutina" novalidate>
+
+        <div class="crear-rutina__header">
+            <div class="crear-rutina__titulo-grupo">
+                <button type="button" class="crear-rutina__volver" aria-label="Volver">&#8592;</button>
+                <h2 class="crear-rutina__titulo">Crear Rutina</h2>
+            </div>
+
+            <!-- Nombre_rutina: crearRutina.php lo lee por este "name" -->
+            <label for="nombreRutina" class="sr-only">Nombre de la rutina</label>
+            <input type="text" name="Nombre_rutina" id="nombreRutina" placeholder="Nombre" maxlength="50"
+                class="crear-rutina__input-nombre">
+        </div>
+
+        <!-- Horario (Mañana o Tarde, igual para toda la rutina) y descripción -->
+        <div class="crear-rutina__datos">
+            <div class="crear-ejercicio__campo crear-rutina__campo-horario">
+                <label for="horarioRutina" class="crear-ejercicio__label">Horario</label>
+                <select name="Horario" id="horarioRutina" class="crear-rutina__select">
+                    <option value="Mañana">Mañana</option>
+                    <option value="Tarde">Tarde</option>
+                </select>
+            </div>
+
+            <div class="crear-ejercicio__campo crear-rutina__campo-descripcion">
+                <label for="descripcionRutina" class="crear-ejercicio__label">Descripcion</label>
+                <textarea name="Descripcion_rutina" id="descripcionRutina" class="crear-ejercicio__textarea"
+                    maxlength="255"></textarea>
+            </div>
+        </div>
+
+        <!-- instructor.js dibuja aquí una tarjeta (.dia-card) por cada día, a partir de #plantillaDia -->
+        <div id="diasRutina" class="dias-rutina"></div>
+
+        <button type="button" class="btn-agregar-dia" id="btnAgregarDia">Agregar Día +</button>
+
+        <div class="crear-rutina__acciones">
+            <!-- Cliente al que se le asigna la rutina: instructor.js lo llena con los usuarios de rol "cliente" y crearRutina.php lo lee por este "name" -->
+            <label for="asignarUsuario" class="sr-only">Cliente al que se le asigna la rutina</label>
+            <select id="asignarUsuario" name="Id_cliente" class="asignarUsuario" required>
+                <option value="" disabled selected>Cargando clientes...</option>
+            </select>
+            <input type="submit" value="Publicar" class="boton" id="btnPublicarRutina">
+        </div>
+
+    </form>
+ 
+    <br>
+ 
+    <!-- Lista de rutinas creadas: cargarRutina() dibuja acá una tarjeta (.rutina-item) por rutina.
+         Los estilos están en css/rutinasCreadas.css -->
+    <h3 class="ejercicios-lista__titulo">Rutinas creadas</h3>
+    <div class="rutinas-lista" id="tablaRutinas"></div>
+ 
+    <br>
+ 
+</section>
+ 
+    <!-- Plantillas que clona instructor.js (no se muestran) -->
+    <template id="plantillaDia">
+        <div class="dia-card">
+            <div class="dia-card__cabecera">
+                <select class="dia-card__nombre" aria-label="Día de la semana"></select>
+                <button type="button" class="dia-card__quitar" aria-label="Quitar día">&times;</button>
+            </div>
+
+            <div class="dia-card__scroll"> <!-- si la tabla no entra, se desliza solo ella y no toda la tarjeta -->
+                <table class="dia-card__tabla">
+                <thead>
+                    <tr>
+                        <th>Ejercicio</th>
+                        <th>Series</th>
+                        <th>Repeticiones</th>
+                        <th>Notas</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            </div>
+
+            <button type="button" class="btn-agregar-slot">Agregar Ejercicio +</button>
+        </div>
+    </template>
+
+    <template id="plantillaSlot">
+        <tr class="slot">
+            <td data-label="Ejercicio">
+                <div class="slot__celda">
+                    <select class="slot__select" aria-label="Ejercicio"></select>
+                    <button type="button" class="dia-card__expandir" aria-label="Ver más detalles"
+                        aria-expanded="false">&#9660;</button>
+                </div>
+            </td>
+            <td data-label="Series"><input type="number" class="slot__series" min="1" max="999" step="1" inputmode="numeric" aria-label="Series"></td>
+            <td data-label="Repeticiones"><input type="number" class="slot__reps" min="1" max="999" step="1" inputmode="numeric" aria-label="Repeticiones"></td>
+            <td data-label="Notas"><input type="text" class="slot__notas" maxlength="255" aria-label="Notas"></td>
+            <td><button type="button" class="slot__quitar" aria-label="Quitar ejercicio">&times;</button></td>
+        </tr>
+    </template>
+
+    <div class="contenedor"> </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.25/dist/sweetalert2.all.min.js"></script>
+    <script src="./js/musculo.js"></script> <!-- va ANTES de instructor.js para que el arreglo "musculos" ya exista -->
+    <script src="./js/instructor.js"></script>
+    <script src="./js/rutinasCreadas.js"></script> <!-- botón "Ver" de Rutinas creadas; va DESPUÉS de instructor.js -->
+</body>
+ 
+</html>

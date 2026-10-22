@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- Esta línea declara el tipo de documento y la versión de HTML que se está utilizando. En este caso HTML5. Ayuda a los navegadores a renderizar el contenido correctamente.-->
+<html lang="es"> <!-- Esta línea especifica el idioma del documento -->
+
+<head> <!-- Acá empieza el encabezado del documento -->
+    <meta charset="UTF-8"> <!-- Esta línea especifica el conjunto de caracteres que se va a utilizar -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <!-- Esta línea especifica el viewport para dispositivos móviles -->
+    <title>Hub</title><!-- Esta línea especifica el título del documento -->
+    <link rel="stylesheet" href="./css/style.css"> <!-- Esta línea especifica el archivo de estilo CSS, en este caso se llama style.css -->
+
+    <link rel="icon" type="image/jpeg" href="img/index/imagen.jpg">
+
+</head><!-- Se cierra el encabezado del documento -->
+
+<body><!-- Se abre el cuerpo del documento -->
+
+    <header class="header">
+        <div class="top">
+        </div>
+<!-- estas son las animaciones que aparecen en la parte superior e inferior de la pagina, son los mismos que en registrarse.html y loguearse.html. -->
+        <div class="banner">
+            <div class="marquee marquee--bottom">
+                <div class="marquee__track" id="marqueeTrack">
+                    <div class="marquee__group" id="marqueeGroup1"></div>
+                    <div class="marquee__group" id="marqueeGroup2"></div>
+                </div>
+            </div>
+            <div class="marquee marquee--top">
+                <div class="marquee__track" id="marqueeTrackTop">
+                    <div class="marquee__group" id="marqueeGroup3"></div>
+                    <div class="marquee__group" id="marqueeGroup4"></div>
+                </div>
+            </div>
+            <img src="./img/index/banner.jpg" alt="Banner de entrenamiento" class="banner__img">
+        </div>
+    </header>
+
+    <form id="app" class="opciones">
+        <!-- Los botones "Registrarse" e "Inicio de sesión" se inyectan acá desde script.js -->
+    </form>
+
+    <img src="./img/index/logodark.png" id="logo" alt="logo">
+
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>

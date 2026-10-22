@@ -1,0 +1,1171 @@
+
+Instructor · CSS
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+ 
+/* Utilidad: oculta visualmente pero deja accesible para lectores de pantalla */
+ 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+ 
+/* Fondo y fuente */
+ 
+body {
+    background-color: #e8e9ec;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    padding: 2em;
+}
+ 
+/* Cerrar sesion */
+.boton__icono {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+ 
+ 
+ 
+/* Tarjeta que envuelve el titulo + form + tabla de "Ejercicio" */
+ 
+.seccion-ejercicio {
+    max-width: 900px;
+    margin: 0 auto 3em;
+    background-color: #f4f5f7;
+    border-radius: 16px;
+    padding: 2em 2.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+ 
+/* Contenedor general: main + sidebar en fila */
+ 
+.crear-ejercicio {
+    display: flex;
+    width: 100%;
+    max-width: 1100px;
+    min-height: 640px;
+    background-color: #f4f5f7;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+ 
+ 
+/* ---------- Columna principal ---------- */
+ 
+.crear-ejercicio__main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+    padding: 2em 2.5em;
+}
+ 
+/* Encabezado: boton de volver + titulo a la izquierda, nombre a la derecha */
+ 
+.crear-ejercicio__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+ 
+.crear-ejercicio__titulo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+ 
+.crear-ejercicio__volver {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+ 
+.crear-ejercicio__titulo {
+    font-size: 22px;
+    color: #2f2f2f;
+}
+ 
+.crear-ejercicio__input-nombre {
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    background-color: #ffffff;
+    width: min(320px, 100%);
+    font-size: 15px;
+    outline: none;
+}
+ 
+/* Input de texto generico (Nombre / Descripcion del ejercicio) */
+ 
+.crear-ejercicio__input {
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    font-size: 15px;
+    font-family: inherit;
+    outline: none;
+    background-color: #ffffff;
+    width: 100%;
+}
+ 
+/* Formulario */
+ 
+.crear-ejercicio__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+}
+ 
+.crear-ejercicio__campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+ 
+.crear-ejercicio__label {
+    font-style: italic;
+    color: #6b6b6b;
+}
+ 
+.crear-ejercicio__textarea {
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    border-radius: 10px;
+    min-height: 100px;
+    padding: 0.9em 1em;
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical;
+    outline: none;
+}
+ 
+/* Musculos trabajados: lista de tags en fila */
+ 
+.tag-list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8em;
+}
+ 
+.tag {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    background-color: #6fa3b0;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 0.5em 1.1em;
+    font-size: 14px;
+}
+ 
+.tag__remove {
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+}
+ 
+.btn-agregar {
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+    background: none;
+    border: 1px dashed #b7b9c2;
+    border-radius: 20px;
+    padding: 0.5em 1.1em;
+    color: #6b6b6b;
+    cursor: pointer;
+    font-size: 14px;
+}
+ 
+.btn-agregar:hover {
+    border-color: #7ed957;
+    color: #4a4a4a;
+}
+ 
+.btn-agregar__icono {
+    font-weight: bold;
+}
+ 
+ 
+/* ---------- Sidebar ---------- */
+ 
+.crear-ejercicio__sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background-color: #3d4152;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em 1.6em;
+}
+ 
+.crear-ejercicio__sidebar-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.6em;
+}
+ 
+.crear-ejercicio__sidebar-titulo {
+    font-size: 18px;
+    text-align: center;
+}
+ 
+/* Cajas para adjuntar multimedia */
+ 
+.upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6em;
+    width: 100%;
+}
+ 
+.upload__label {
+    font-style: italic;
+    font-size: 14px;
+}
+ 
+.upload__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed rgba(255, 255, 255, 0.5);
+    border-radius: 12px;
+    color: #ffffff;
+    cursor: pointer;
+}
+ 
+.upload__box--buscar {
+    width: 100px;
+    height: 100px;
+}
+ 
+.upload__box--arrastrar {
+    width: 100%;
+    height: 150px;
+}
+ 
+.upload__icono {
+    width: 32px;
+    height: 32px;
+}
+ 
+.upload__input {
+    display: none;
+}
+ 
+.crear-ejercicio__preview {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+ 
+.crear-ejercicio__preview img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+ 
+/* Botones de accion, al pie del sidebar */
+ 
+.crear-ejercicio__acciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+ 
+/* Se reutiliza el estilo de boton verde del resto del sitio */
+ 
+.boton {
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.9em 1.5em;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+}
+ 
+.boton:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+ 
+.boton--borrador {
+    background-color: #59647a;
+}
+ 
+.boton--borrador:hover {
+    background-color: #6f7c96;
+    color: #ffffff;
+}
+ 
+ 
+/* ---------- Listado de ejercicios en tarjetas (no afecta la tabla de Rutina) ---------- */
+ 
+.ejercicios-lista__titulo {
+    font-size: 18px;
+    color: #2f2f2f;
+    margin-top: 0.5em;
+}
+ 
+.ejercicios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+}
+ 
+.ejercicio-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2em;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1em 1.2em;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+ 
+.ejercicio-card__img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+    background-color: #eceef1;
+}
+ 
+.ejercicio-card__img--vacia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #9a9ea6;
+    font-size: 11px;
+    text-align: center;
+}
+ 
+.ejercicio-card__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    min-width: 0;
+}
+ 
+.ejercicio-card__nombre {
+    font-weight: bold;
+    color: #2f2f2f;
+}
+ 
+.ejercicio-card__descripcion {
+    color: #4a4a4a;
+    font-size: 14px;
+}
+ 
+.ejercicio-card__notas {
+    color: #6b6b6b;
+    font-size: 13px;
+    font-style: italic;
+}
+ 
+.ejercicio-card__acciones {
+    display: flex;
+    align-items: center;
+}
+ 
+.boton--pequeno {
+    width: auto;
+    padding: 0.5em 1.2em;
+    font-size: 14px;
+}
+ 
+.boton--borrar {
+    background-color: #e2574c;
+}
+ 
+.boton--borrar:hover {
+    background-color: #f28b83;
+    color: #ffffff;
+}
+ 
+.cerrarSession {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.6em;
+}
+ 
+/* El boton es el <a>, con el mismo estilo que .boton--cerrar de PanelAdmin.css */
+ 
+.cerrarSession a {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7em 1.4em;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+ 
+.cerrarSession a:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+ 
+.oculto {
+ 
+    display: none;
+}
+ 
+ 
+ #nuevoMusculo {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 5%;
+    cursor: pointer;
+    margin: 2em;
+    color: #223049;
+}
+
+ 
+/* A PARTIR DE ACA ES CREAR RUTINA */
+ 
+/* Tarjeta que envuelve el titulo + form + tabla de "Rutina" */
+ 
+.seccion-rutina {
+    max-width: 900px;
+    margin: 0 auto 3em;
+    background-color: #f5f6f7;
+    border-radius: 16px;
+    padding: 2em 2.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+ 
+.crear-rutina {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+}
+ 
+/* Encabezado: boton de volver + titulo a la izquierda, nombre a la derecha */
+ 
+.crear-rutina__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+ 
+.crear-rutina__titulo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+ 
+.crear-rutina__volver {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+ 
+.crear-rutina__titulo {
+    font-size: 22px;
+    color: #2f2f2f;
+}
+ 
+.crear-rutina__input-nombre {
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    background-color: #ffffff;
+    width: min(320px, 100%);
+    font-size: 15px;
+    outline: none;
+}
+ 
+/* Tarjeta de un dia (ej: "Día A") */
+ 
+.dia-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: #eceef1;
+    border-radius: 12px;
+    padding: 1.4em;
+}
+ 
+.dia-card__nombre {
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    background-color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    outline: none;
+    width: min(240px, 100%);
+}
+ 
+.dia-card__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f4f5f7;
+    border: 1px solid #2f2f2f;
+}
+ 
+.dia-card__tabla th,
+.dia-card__tabla td {
+    border: 1px solid #2f2f2f;
+    padding: 0.8em 1em;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: middle;
+}
+ 
+.dia-card__tabla th {
+    font-weight: bold;
+}
+ 
+/* La primera columna (Ejercicio) va en fila: nombre + boton circular de "expandir" */
+ 
+.dia-card__tabla td:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.6em;
+    font-weight: bold;
+}
+ 
+.dia-card__expandir {
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+ 
+/* Boton oscuro para agregar una fila dentro de un dia */
+ 
+.btn-agregar-slot {
+    align-self: flex-start;
+    background-color: #2f3445;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7em 1.4em;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+ 
+.btn-agregar-slot:hover {
+    background-color: #454c66;
+}
+ 
+/* Caja para agregar un dia nuevo */
+ 
+.btn-agregar-dia {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    border-radius: 8px;
+    padding: 0.9em 1.2em;
+    color: #6b6b6b;
+    cursor: pointer;
+    font-size: 15px;
+    width: 100%;
+}
+ 
+.btn-agregar-dia:hover {
+    border-color: #7ed957;
+    color: #2f2f2f;
+}
+ 
+/* Botones de accion al pie del formulario */
+ 
+.crear-rutina__acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+ 
+.crear-rutina__acciones .boton {
+    width: auto;
+    padding: 0.9em 1.8em;
+}
+ 
+.seccion-rutina {
+    max-width: 900px;
+    margin: 0 auto 3em;
+    background-color: #f4f5f7;
+    border-radius: 16px;
+    padding: 2em 2.5em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+ 
+.crear-rutina {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+}
+ 
+/* Encabezado: boton de volver + titulo a la izquierda, nombre a la derecha */
+ 
+.crear-rutina__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+ 
+.crear-rutina__titulo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+}
+ 
+.crear-rutina__volver {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    color: #2f2f2f;
+}
+ 
+.crear-rutina__titulo {
+    font-size: 22px;
+    color: #2f2f2f;
+}
+ 
+.crear-rutina__input-nombre {
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    background-color: #ffffff;
+    width: min(320px, 100%);
+    font-size: 15px;
+    outline: none;
+}
+ 
+/* Bloque de un dia: nombre del dia + tabla de ejercicios + boton de agregar ejercicio */
+ 
+.dia-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+ 
+.dia-card__nombre {
+    border: none;
+    border-radius: 8px;
+    padding: 0.9em 1.2em;
+    background-color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    width: 100%;
+}
+ 
+.dia-card__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #2f3548;
+}
+ 
+.dia-card__tabla th,
+.dia-card__tabla td {
+    border: 1px solid #2f3548;
+    padding: 0.9em 1em;
+    text-align: left;
+    font-size: 14px;
+}
+ 
+.dia-card__tabla thead th {
+    background-color: #f4f5f7;
+    color: #2f2f2f;
+    font-weight: bold;
+}
+ 
+.dia-card__tabla tbody td {
+    background-color: #f4f5f7;
+    color: #2f2f2f;
+}
+ 
+/* Boton circular decorativo (a futuro: expandir/colapsar detalles de la fila) */
+ 
+.dia-card__expandir {
+    background-color: #7ed957;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-size: 10px;
+    vertical-align: middle;
+}
+ 
+.btn-agregar-slot {
+    align-self: flex-start;
+    background-color: #223049;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8em 1.4em;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+ 
+.btn-agregar-slot:hover {
+    background-color: #34456b;
+}
+ 
+.btn-agregar-dia {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.9em 1.2em;
+    text-align: left;
+    font-size: 15px;
+    color: #6b6b6b;
+    cursor: pointer;
+    width: 100%;
+}
+ 
+.btn-agregar-dia:hover {
+    color: #2f2f2f;
+}
+ 
+.crear-rutina__acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+    flex-wrap: wrap;
+    margin-top: 1em;
+}
+ 
+.crear-rutina__acciones .boton {
+    width: auto;
+}
+ 
+ 
+ 
+ 
+/* ---------- Responsive ---------- */
+ 
+/* Tablet: la columna principal + sidebar de 260px (.crear-ejercicio) */
+/* deja de entrar comoda en fila, asi que pasa a apilarse en columna. */
+/* La tabla de "Dia" (.dia-card__tabla) tiene 4 columnas fijas que     */
+/* tampoco entran: igual que .tabla-usuarios en PanelAdmin.css, el    */
+/* contenedor padre (.dia-card) gana overflow-x:auto y la tabla un    */
+/* min-width, para poder deslizarla de costado en vez de romper el    */
+/* diseño.                                                             */
+ 
+@media (max-width: 900px) {
+ 
+    body {
+        padding: 1.2em;
+    }
+ 
+    .seccion-ejercicio,
+    .seccion-rutina {
+        padding: 1.5em;
+    }
+ 
+    .crear-ejercicio {
+        flex-direction: column;
+        min-height: 0;
+    }
+ 
+    .crear-ejercicio__sidebar {
+        width: 100%;
+    }
+ 
+    .dia-card {
+        overflow-x: auto;
+    }
+ 
+    .dia-card__tabla {
+        min-width: 500px;
+    }
+}
+ 
+/* Celular: los encabezados (boton volver + titulo | input nombre)  */
+/* pasan de fila a columna, igual que .panel__header en             */
+/* PanelAdmin.css. Las tarjetas de ejercicio ya creadas se acomodan */
+/* en columna en vez de en fila, y la tabla simple de "Rutinas"     */
+/* (la del final, sin clase) se achica en vez de scrollear, porque  */
+/* con solo 3 columnas todavia entra si el texto es mas chico.      */
+ 
+@media (max-width: 640px) {
+ 
+    body {
+        padding: 0.8em;
+    }
+ 
+    .seccion-ejercicio,
+    .seccion-rutina {
+        padding: 1.2em 1em;
+        margin-bottom: 1.5em;
+    }
+ 
+    .crear-ejercicio__header,
+    .crear-rutina__header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8em;
+    }
+ 
+    .crear-ejercicio__titulo-grupo,
+    .crear-rutina__titulo-grupo {
+        justify-content: center;
+    }
+ 
+    .crear-ejercicio__input-nombre,
+    .crear-rutina__input-nombre,
+    .dia-card__nombre {
+        width: 100%;
+    }
+ 
+    .crear-ejercicio__sidebar {
+        padding: 1.5em 1.2em;
+    }
+ 
+    .ejercicio-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+ 
+    .crear-rutina__acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+ 
+    .crear-rutina__acciones .boton {
+        width: 100%;
+    }
+ 
+    /* Igual que PanelAdmin en celular: el boton queda centrado */
+    .cerrarSession {
+        justify-content: center;
+    }
+ 
+    /* La tabla final de "Rutinas creadas" no tiene clase propia,   */
+    /* asi que se selecciona por contexto (hija directa de la       */
+    /* seccion), igual criterio de nth-child/posicion que se usa    */
+    /* en el resto de este archivo y en PanelAdmin.css.             */
+ 
+    .seccion-rutina > table {
+        font-size: 13px;
+    }
+ 
+    .seccion-rutina > table th,
+    .seccion-rutina > table td {
+        padding: 0.5em;
+    }
+}
+ 
+/* ---------- Músculos seleccionables (dibujados por instructor.js) ---------- */
+ 
+.tag--seleccionable {
+    cursor: pointer;
+    background-color: #c9ccd3;
+    color: #2f2f2f;
+}
+ 
+.tag--seleccionable:hover {
+    opacity: 0.85;
+}
+ 
+.tag--seleccionable.tag--activo {
+    background-color: #6fa3b0;
+    color: #ffffff;
+}
+ 
+/* La "x" que borra el músculo: oscura sobre la pastilla gris, blanca sobre la seleccionada */
+.tag--seleccionable .tag__remove {
+    color: #2f2f2f;
+}
+ 
+.tag--seleccionable.tag--activo .tag__remove {
+    color: #ffffff;
+}
+ 
+.tag--seleccionable .tag__remove:hover {
+    color: #d33;
+}
+
+/* ---------- Crear rutina: formulario dinámico (días y filas de ejercicio) ---------- */
+
+.crear-rutina__datos {
+    display: flex;
+    gap: 1.2em;
+    flex-wrap: wrap;
+}
+
+.crear-rutina__campo-horario {
+    flex: 0 0 180px;
+}
+
+.crear-rutina__campo-descripcion {
+    flex: 1 1 300px;
+}
+
+.crear-rutina__select,
+.asignarUsuario,
+.dia-card__nombre {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    font-family: inherit;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+}
+
+.dias-rutina {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+}
+
+.dia-card__cabecera {
+    display: flex;
+    gap: 0.6em;
+    align-items: center;
+}
+
+.dia-card__cabecera .dia-card__nombre {
+    flex: 1;
+    width: auto;
+}
+
+.dia-card__quitar,
+.slot__quitar {
+    background: none;
+    border: none;
+    color: #6b6b6b;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0.2em 0.4em;
+}
+
+.dia-card__quitar:hover,
+.slot__quitar:hover {
+    color: #d33;
+}
+
+.dia-card__tabla select,
+.dia-card__tabla input[type="number"],
+.dia-card__tabla input[type="text"] {
+    width: 100%;
+    border: 1px solid #cfd3da;
+    border-radius: 6px;
+    padding: 0.5em 0.6em;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #2f2f2f;
+}
+
+.slot__celda {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.slot__celda .slot__select {
+    flex: 1;
+    min-width: 0;
+}
+
+.dia-card__tabla th:nth-child(2),
+.dia-card__tabla th:nth-child(3) {
+    width: 110px;
+}
+
+.dia-card__tabla th:last-child {
+    width: 44px;
+}
+
+.dia-card__tabla .slot--error td {
+    background-color: #fdecec;
+}
+
+.dia-card__tabla .slot-detalle td {
+    font-size: 13px;
+    color: #4a4a4a;
+}
+
+.slot-detalle p {
+    margin: 0.2em 0;
+}
+
+.boton:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* NOTA: este archivo empieza con el texto suelto "Instructor · CSS" (sin las marcas de comentario). El navegador lo   */
+/* toma como parte del selector de la primera regla y la descarta, así que el reset "* { box-sizing: border-box;   */
+/* margin: 0; padding: 0 }" NUNCA se aplicó. Para no mover el resto de la página, acá se pide border-box solo en   */
+/* el formulario de rutina: sin esto, los inputs con width:100% + padding se pasan del contenedor en celular.     */
+
+.crear-rutina,
+.crear-rutina *,
+.crear-rutina *::before,
+.crear-rutina *::after {
+    box-sizing: border-box;
+}
+
+/* La tabla de cada día se desliza sola dentro de su contenedor, en vez de deslizar toda la tarjeta */
+
+.dia-card__scroll {
+    overflow-x: auto;
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .dia-card {
+        overflow-x: visible; /* anula el overflow-x:auto de arriba: ahora scrollea .dia-card__scroll */
+    }
+
+    .dia-card__tabla {
+        min-width: 640px;
+    }
+}
+
+/* Celular: cada fila de ejercicio del formulario pasa de fila de tabla a ficha apilada (con sus etiquetas), */
+/* así Series, Repeticiones y Notas no quedan escondidas a la derecha detrás de un scroll lateral.           */
+
+@media (max-width: 640px) {
+
+    .dia-card__scroll {
+        overflow-x: visible;
+    }
+
+    .dia-card__tabla {
+        min-width: 0;
+        border: none;
+    }
+
+    .dia-card__tabla,
+    .dia-card__tabla tbody {
+        display: block;
+    }
+
+    .dia-card__tabla thead {
+        display: none; /* las etiquetas ahora van dentro de cada ficha (data-label) */
+    }
+
+    .dia-card__tabla tbody tr.slot {
+        display: grid;
+        grid-template-columns: 1fr 1fr 2.4em;
+        grid-template-areas:
+            "ej ej qt"
+            "se re re"
+            "no no no";
+        gap: 0.5em 0.8em;
+        background-color: #f4f5f7;
+        border: 1px solid #2f3548;
+        border-radius: 8px;
+        padding: 0.8em;
+        margin-bottom: 0.7em;
+    }
+
+    .dia-card__tabla tbody tr.slot.slot--error {
+        background-color: #fdecec;
+    }
+
+    .dia-card__tabla tbody .slot td {
+        display: block;
+        min-width: 0;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        font-weight: normal;
+    }
+
+    .dia-card__tabla tbody .slot td:nth-child(1) { grid-area: ej; }
+    .dia-card__tabla tbody .slot td:nth-child(2) { grid-area: se; }
+    .dia-card__tabla tbody .slot td:nth-child(3) { grid-area: re; }
+    .dia-card__tabla tbody .slot td:nth-child(4) { grid-area: no; }
+    .dia-card__tabla tbody .slot td:nth-child(5) { grid-area: qt; align-self: end; justify-self: end; }
+
+    .dia-card__tabla tbody .slot td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 0.2em;
+        font-size: 12px;
+        font-style: italic;
+        color: #6b6b6b;
+    }
+
+    .dia-card__tabla tbody .slot td:last-child::before {
+        content: none; /* el botón de quitar no lleva etiqueta */
+    }
+
+    /* El detalle desplegable (▼) queda pegado debajo de su ficha */
+
+    .dia-card__tabla tbody tr.slot-detalle {
+        display: block;
+        margin: -0.3em 0 0.7em;
+        padding: 0 0.8em;
+    }
+
+    .dia-card__tabla tbody tr.slot-detalle.oculto {
+        display: none;
+    }
+
+    .dia-card__tabla tbody .slot-detalle td {
+        display: block;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+}

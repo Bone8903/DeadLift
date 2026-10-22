@@ -1,0 +1,542 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Fondo y fuente (mismo criterio que loguearseAdmin.css) */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-color: #0a0a0a;
+    background-image: url("../img/index/banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* ---------- Estructura general ---------- */
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6em;
+    min-height: 100vh;
+    padding: 2em;
+    background-color: #00000080;
+}
+
+/* ---------- Encabezado ---------- */
+
+.panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+    flex-wrap: wrap;
+}
+
+.panel__header-lado {
+    display: flex;
+    align-items: center;
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.panel__header-lado:last-child {
+    justify-content: flex-end;
+}
+
+.panel__header-centro {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.panel__titulo {
+    font-size: 26px;
+    text-align: center;
+}
+
+/* Boton generico verde (mismo criterio que style.css / instructor.css) */
+
+.boton {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.7em 1.4em;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.boton:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+
+.boton__icono {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* ---------- Mensajes ---------- */
+
+.panel__mensaje {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* ---------- Tarjeta que contiene la tabla ---------- */
+
+.panel__tarjeta {
+    display: flex;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.panel__tarjeta-titulo {
+    display: flex;
+    justify-content: center;
+    background-color: #6b6b6b;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 0.9em;
+}
+
+/* ---------- Tabla de usuarios (con display flex, sin perder la semantica de tabla) ---------- */
+/* Columnas reales (7), en el mismo orden que PanelAdmin.html y que el JS:          */
+/* 1 ID | 2 Nombre | 3 Apellido | 4 Email | 5 Teléfono | 6 Rol | 7 Acción            */
+
+.tabla-usuarios {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla-usuarios thead,
+.tabla-usuarios tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.tabla-usuarios thead tr,
+.tabla-usuarios tbody tr {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    padding: 0.9em 1.2em;
+    border-bottom: 1px solid #2e2e2e;
+}
+
+.tabla-usuarios thead tr {
+    background-color: #262626;
+}
+
+.tabla-usuarios tbody tr:nth-child(odd) {
+    background-color: #1e1e1e;
+}
+
+.tabla-usuarios tbody tr:nth-child(even) {
+    background-color: #242424;
+}
+
+/* Celdas: mismo ancho en el header y en el cuerpo (generado por JS, sin clase -> nth-child) */
+
+.tabla-usuarios thead th,
+.tabla-usuarios tbody td {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-size: 14px;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.tabla-usuarios thead th {
+    color: #b5b5b5;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* 1 - ID */
+
+.tabla-usuarios tr > *:nth-child(1) {
+    flex: 0 0 44px;
+    color: #8a8a8a;
+    justify-content: center;
+}
+
+/* 2 y 3 - Nombre + Apellido: se ven como un unico chip gris (criterio de .tag de instructor.css) */
+
+.tabla-usuarios tr > *:nth-child(2),
+.tabla-usuarios tr > *:nth-child(3) {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.tabla-usuarios tbody tr > *:nth-child(2),
+.tabla-usuarios tbody tr > *:nth-child(3) {
+    background-color: #3a3a3a;
+    padding: 0.5em 0.7em;
+}
+
+.tabla-usuarios tbody tr > *:nth-child(2) {
+    border-radius: 20px 0 0 20px;
+    padding-left: 1.1em;
+}
+
+.tabla-usuarios tr > *:nth-child(3) {
+    margin-left: -0.6em; /* anula el gap para que Nombre y Apellido formen un solo chip */
+}
+
+.tabla-usuarios tbody tr > *:nth-child(3) {
+    border-radius: 0 20px 20px 0;
+    padding-right: 1.1em;
+}
+
+/* Alinea los textos del header con los del chip */
+
+.tabla-usuarios thead th:nth-child(2) {
+    padding-left: 1.1em;
+    padding-right: 0.7em;
+}
+
+.tabla-usuarios thead th:nth-child(3) {
+    padding-left: 0.7em;
+    padding-right: 1.1em;
+}
+
+/* 4 y 5 - Contacto: Email + Telefono */
+
+.tabla-usuarios tr > *:nth-child(4) {
+    flex: 1.6 1 0;
+}
+
+.tabla-usuarios tr > *:nth-child(5) {
+    flex: 1 1 0;
+}
+
+.tabla-usuarios tbody tr > *:nth-child(4),
+.tabla-usuarios tbody tr > *:nth-child(5) {
+    color: #c9c9c9;
+}
+
+/* 6 - Rol: chip de color (criterio de .tag de instructor.css) */
+
+.tabla-usuarios tr > *:nth-child(6) {
+    flex: 0 0 110px;
+    justify-content: center;
+}
+
+.tabla-usuarios tbody tr > *:nth-child(6) {
+    background-color: #6fa3b0;
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 0.4em 0.8em;
+    text-align: center;
+}
+
+/* 7 - Accion: botones Borrar y Bloquear, uno debajo del otro */
+
+.tabla-usuarios tr > *:nth-child(7) {
+    flex: 0 0 130px;
+    justify-content: center;
+}
+
+.tabla-usuarios tbody td:nth-child(7) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+}
+
+.tabla-usuarios tbody button[data-id] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    width: 100%;
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5em 0.9em;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tabla-usuarios tbody button[data-id]::before {
+    content: "🗑";
+    font-size: 13px;
+    line-height: 1;
+}
+
+.tabla-usuarios tbody button[data-id]:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+
+.tabla-usuarios tbody button[data-bloquear-id] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4em;
+    width: 100%;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5em 0.9em;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tabla-usuarios tbody button[data-bloquear-id]::before {
+    content: "🔒";
+    font-size: 13px;
+    line-height: 1;
+}
+
+.tabla-usuarios tbody button[data-bloquear-id][data-bloquear="0"] {
+    background-color: #7ed957;
+}
+
+.tabla-usuarios tbody button[data-bloquear-id][data-bloquear="0"]::before {
+    content: "🔓";
+}
+
+.tabla-usuarios tbody button[data-bloquear-id]:hover {
+    opacity: 0.85;
+}
+
+/* Fila de "No hay usuarios registrados." (colspan) */
+
+.tabla-usuarios tbody tr > td[colspan] {
+    flex: 1 1 auto;
+    justify-content: center;
+    background-color: transparent;
+    color: #b5b5b5;
+    font-style: italic;
+}
+
+/* ---------- Boton "Generar codigo de invitacion" ---------- */
+
+#btnGenerarCodigo {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.7em 1.4em;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 5em;
+}
+
+/* ====================================================================== */
+/* ---------- Responsive ---------- */
+/* ====================================================================== */
+
+/* Tablet y menos (<= 900px): ya no entran 7 columnas en fila sin apretarse, */
+/* asi que cada usuario pasa a ser una "tarjeta" con una grilla de 2         */
+/* columnas (etiqueta + dato). El thead se oculta y las etiquetas salen del  */
+/* ::before de cada celda.                                                   */
+
+@media (max-width: 900px) {
+
+    .panel {
+        padding: 1.2em;
+    }
+
+    /* Header: el titulo deja de estar centrado en forma absoluta (se pisaba con el boton) */
+
+    .panel__header-centro {
+        position: static;
+        transform: none;
+        flex: 1 1 auto;
+    }
+
+    .panel__titulo {
+        font-size: 22px;
+    }
+
+    .panel__header-lado {
+        display: none;
+    }
+
+    /* Boton de codigo: sin el margen de 5em que lo empujaba */
+
+    #btnGenerarCodigo {
+        margin: 1.2em;
+    }
+
+    /* Tabla -> tarjetas */
+
+    .tabla-usuarios thead {
+        display: none;
+    }
+
+    .tabla-usuarios tbody tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: stretch;
+        gap: 0.6em;
+        padding: 1em 1.2em;
+    }
+
+    /* Se pisan los anchos "flex: N Npx" (que eran para fila) y los margenes/radios del chip unico */
+
+    .tabla-usuarios tbody tr > *:nth-child(1),
+    .tabla-usuarios tbody tr > *:nth-child(2),
+    .tabla-usuarios tbody tr > *:nth-child(3),
+    .tabla-usuarios tbody tr > *:nth-child(4),
+    .tabla-usuarios tbody tr > *:nth-child(5),
+    .tabla-usuarios tbody tr > *:nth-child(6),
+    .tabla-usuarios tbody tr > *:nth-child(7) {
+        flex: none;
+        width: auto;
+        min-width: 0;
+        margin: 0;
+        justify-content: flex-start;
+        font-size: 14px;
+    }
+
+    .tabla-usuarios tbody tr > *:nth-child(2),
+    .tabla-usuarios tbody tr > *:nth-child(3) {
+        border-radius: 10px;
+        padding: 0.5em 0.9em;
+    }
+
+    .tabla-usuarios tbody tr > *:nth-child(4),
+    .tabla-usuarios tbody tr > *:nth-child(5) {
+        background-color: #2e2e2e;
+        border-radius: 10px;
+        padding: 0.5em 0.9em;
+    }
+
+    .tabla-usuarios tbody tr > *:nth-child(6) {
+        border-radius: 10px;
+        padding: 0.5em 0.9em;
+    }
+
+    /* ID, Rol y Accion ocupan el ancho completo de la tarjeta */
+
+    .tabla-usuarios tbody tr > *:nth-child(1),
+    .tabla-usuarios tbody tr > *:nth-child(6),
+    .tabla-usuarios tbody tr > *:nth-child(7) {
+        grid-column: 1 / -1;
+    }
+
+    /* Botones de accion: lado a lado en vez de uno debajo del otro */
+
+    .tabla-usuarios tbody td:nth-child(7) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.6em;
+    }
+
+    .tabla-usuarios tbody td:nth-child(7) button {
+        flex: 1 1 130px;
+        width: auto;
+        padding: 0.6em 0.9em;
+    }
+
+    /* Etiquetas (ID:, Nombre:, etc.) para no perder el significado al ocultar el thead */
+
+    .tabla-usuarios tbody tr > *:nth-child(1)::before { content: "ID: "; }
+    .tabla-usuarios tbody tr > *:nth-child(2)::before { content: "Nombre: "; }
+    .tabla-usuarios tbody tr > *:nth-child(3)::before { content: "Apellido: "; }
+    .tabla-usuarios tbody tr > *:nth-child(4)::before { content: "Email: "; }
+    .tabla-usuarios tbody tr > *:nth-child(5)::before { content: "Teléfono: "; }
+    .tabla-usuarios tbody tr > *:nth-child(6)::before { content: "Rol: "; }
+
+    .tabla-usuarios tbody tr > *:nth-child(1)::before,
+    .tabla-usuarios tbody tr > *:nth-child(2)::before,
+    .tabla-usuarios tbody tr > *:nth-child(3)::before,
+    .tabla-usuarios tbody tr > *:nth-child(4)::before,
+    .tabla-usuarios tbody tr > *:nth-child(5)::before,
+    .tabla-usuarios tbody tr > *:nth-child(6)::before {
+        color: #8a8a8a;
+        font-weight: bold;
+        margin-right: 0.4em;
+        white-space: nowrap;
+    }
+
+    .tabla-usuarios tbody tr > *:nth-child(6)::before {
+        color: #e3f1f4;
+    }
+
+    /* La fila "No hay usuarios registrados." no es un dato: sin etiqueta y a todo el ancho */
+
+    .tabla-usuarios tbody tr > td[colspan] {
+        grid-column: 1 / -1;
+        justify-content: center;
+        background-color: transparent;
+    }
+
+    .tabla-usuarios tbody tr > td[colspan]::before {
+        content: none;
+    }
+}
+
+/* Celular (<= 640px): una sola columna, titulo oculto y header apilado */
+
+@media (max-width: 640px) {
+
+    .panel {
+        padding: 1em;
+        gap: 1.2em;
+    }
+
+    .panel__header {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8em;
+    }
+
+    .panel__header-centro,
+    .panel__titulo {
+        display: none;
+    }
+
+    .panel__tarjeta {
+        border-radius: 14px;
+    }
+
+    #btnGenerarCodigo {
+        width: calc(100% - 2.4em);
+        justify-content: center;
+        margin: 1.2em;
+    }
+
+    .tabla-usuarios tbody tr {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 1em;
+    }
+}

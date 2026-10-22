@@ -1,0 +1,432 @@
+/* =====================================================
+   Rutinas creadas · Vista de lectura
+   -----------------------------------------------------
+   Estilos de la lista "Rutinas creadas" (una tarjeta por rutina, que dibuja
+   cargarRutina() en js/instructor.js) y de la rutina que se despliega al
+   apretar "Ver" (la dibuja js/rutinasCreadas.js).
+
+   Copian el aspecto de la pantalla del cliente (css/cliente.css), pero todas
+   las clases llevan el prefijo "vr-" (vista de rutina). Así no pisan las clases
+   del formulario de instructor.css (.dia-card, .dia-card__tabla, etc.), que se
+   llaman parecido pero tienen otro uso.
+   ===================================================== */
+
+
+/* ---------- Lista de rutinas: una tarjeta por rutina ---------- */
+
+/* instructor.css no aplica su reset global (ver nota en instructor.css), así que acá se pide border-box
+   a mano: sin esto, los elementos con ancho + padding se pasan del contenedor al achicar la pantalla. */
+
+.rutinas-lista,
+.rutinas-lista *,
+.rutinas-lista *::before,
+.rutinas-lista *::after {
+    box-sizing: border-box;
+    margin: 0; /* los h4 y p traen margen por defecto; el espaciado lo dan los "gap" de cada bloque */
+}
+
+.rutinas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 1em;
+    min-width: 0;
+}
+
+.rutina-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    min-width: 0;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1em 1.2em;
+}
+
+/* Nombre y descripción a la izquierda, botones a la derecha; si no entran, los botones pasan abajo */
+
+.rutina-item__cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.8em 1em;
+    flex-wrap: wrap;
+}
+
+.rutina-item__texto {
+    flex: 1 1 220px;
+    min-width: 0;
+}
+
+.rutina-item__nombre {
+    font-size: 16px;
+    color: #2f2f2f;
+    overflow-wrap: anywhere;
+}
+
+.rutina-item__descripcion {
+    margin-top: 0.3em;
+    font-size: 14px;
+    color: #6b6b6b;
+    overflow-wrap: anywhere;
+}
+
+.rutina-item__descripcion:empty {
+    display: none;
+}
+
+.rutina-item__acciones {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    flex-shrink: 0;
+}
+
+
+/* ---------- Botón "Ver" de cada tarjeta ---------- */
+
+.btn-ver-rutina {
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.5em 1.2em;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-ver-rutina:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+
+
+/* ---------- Contenedor de la rutina desplegada (va dentro de la tarjeta de la lista) ---------- */
+
+.vr-fila {
+    min-width: 0;
+}
+
+
+/* ---------- Tarjeta de la rutina ---------- */
+
+.vr-tarjeta,
+.vr-tarjeta *,
+.vr-tarjeta *::before,
+.vr-tarjeta *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.vr-tarjeta {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 1.2em;
+    background-color: #f4f5f7;
+    border: 1px solid #dcdde1;
+    border-radius: 16px;
+    padding: 1.5em 1.8em;
+    text-align: left;
+    font-size: 15px;
+    color: #2f2f2f;
+}
+
+.vr-mensaje {
+    padding: 1em;
+    text-align: center;
+    color: #6b6b6b;
+    font-style: italic;
+}
+
+/* Encabezado: título a la izquierda, nombre de la rutina a la derecha */
+
+.vr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+
+.vr-titulo {
+    font-size: 22px;
+    color: #2f2f2f;
+}
+
+.vr-nombre {
+    min-height: 2.6em;
+    display: flex;
+    align-items: center;
+    width: min(320px, 100%);
+    border-radius: 8px;
+    padding: 0.7em 1em;
+    background-color: #ffffff;
+    font-size: 15px;
+    color: #2f2f2f;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- Horario y descripción ---------- */
+
+.vr-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6em;
+}
+
+.vr-label {
+    font-style: italic;
+    color: #6b6b6b;
+}
+
+.vr-texto {
+    background-color: #ffffff;
+    border: 1px solid #dcdde1;
+    border-radius: 10px;
+    padding: 0.9em 1em;
+    font-size: 15px;
+    color: #2f2f2f;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+
+/* ---------- Un día: nombre + tabla de ejercicios ---------- */
+
+.vr-dia {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: #eceef1;
+    border-radius: 12px;
+    padding: 1.4em;
+}
+
+.vr-dia__nombre {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 0.9em 1.2em;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2f2f2f;
+}
+
+/* Permite deslizar la tabla de costado si no entra (por ejemplo al mostrar el detalle) */
+
+.vr-scroll {
+    overflow-x: auto;
+}
+
+.vr-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f4f5f7;
+    border: 1px solid #2f3548;
+}
+
+.vr-tabla th,
+.vr-tabla td {
+    border: 1px solid #2f3548;
+    padding: 0.9em 1em;
+    text-align: left;
+    font-size: 14px;
+    vertical-align: middle;
+    color: #2f2f2f;
+    background-color: #f4f5f7;
+    overflow-wrap: anywhere;
+}
+
+.vr-tabla th {
+    font-weight: bold;
+}
+
+/* El título "Ejercicio" y su botón +/− quedan siempre en la misma línea */
+
+.vr-tabla th:first-child {
+    white-space: nowrap;
+}
+
+/* La primera columna (nombre del ejercicio) va en negrita */
+
+.vr-tabla td:first-child {
+    font-weight: bold;
+}
+
+.vr-tabla td img {
+    display: block;
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.vr-musculos {
+    display: block;
+    margin-top: 0.4em;
+    font-size: 13px;
+    color: #6b6b6b;
+    font-style: italic;
+}
+
+/* Botón circular verde "+ / −" */
+
+.vr-toggle {
+    background-color: #7ed957;
+    border: none;
+    border-radius: 50%;
+    color: #ffffff;
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5em;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.vr-toggle:hover {
+    background-color: aquamarine;
+    color: #636363;
+}
+
+/* Las columnas extra (imagen, descripción, notas adicionales) están ocultas por defecto */
+
+.vr-extra {
+    display: none;
+}
+
+/* Cuando la tarjeta tiene la clase "vr-detalle", se muestran */
+
+.vr-detalle .vr-extra {
+    display: table-cell;
+}
+
+.vr-detalle .vr-tabla {
+    min-width: 760px;
+}
+
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+
+    .vr-tabla {
+        min-width: 500px;
+    }
+
+    .vr-detalle .vr-tabla {
+        min-width: 760px;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .rutina-item {
+        padding: 0.9em 1em;
+    }
+
+    /* Cada ejercicio pasa de fila de tabla a ficha apilada con sus etiquetas, para que Series, Repeticiones
+       y Notas no queden escondidas a la derecha. El "+ / −" sigue en el encabezado "Ejercicio". */
+
+    .vr-tabla,
+    .vr-detalle .vr-tabla {
+        display: block;
+        min-width: 0;
+        border: none;
+        background-color: transparent;
+    }
+
+    .vr-tabla thead,
+    .vr-tabla tbody {
+        display: block;
+    }
+
+    .vr-tabla thead tr {
+        display: block;
+    }
+
+    .vr-tabla thead th,
+    .vr-detalle .vr-tabla thead th.vr-extra {
+        display: none; /* incluso con el detalle abierto: los títulos van dentro de cada ficha */
+    }
+
+    .vr-tabla thead th:first-child {
+        display: block;
+        border: none;
+        padding: 0 0 0.6em;
+        background-color: transparent;
+    }
+
+    .vr-tabla tbody tr {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5em 0.8em;
+        margin-bottom: 0.7em;
+        padding: 0.8em;
+        background-color: #f4f5f7;
+        border: 1px solid #2f3548;
+        border-radius: 8px;
+    }
+
+    .vr-tabla tbody td {
+        display: block;
+        min-width: 0;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .vr-tabla tbody td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 0.2em;
+        font-size: 12px;
+        font-style: italic;
+        font-weight: normal;
+        color: #6b6b6b;
+    }
+
+    /* nombre del ejercicio, columnas extra y notas ocupan todo el ancho; series y repeticiones van lado a lado */
+
+    .vr-tabla tbody td:first-child,
+    .vr-tabla tbody td:last-child,
+    .vr-tabla tbody td.vr-extra {
+        grid-column: 1 / -1;
+    }
+
+    .vr-tabla tbody td:first-child::before {
+        content: none;
+    }
+
+    .vr-tabla tbody td.vr-extra {
+        display: none;
+    }
+
+    .vr-detalle .vr-tabla tbody td.vr-extra {
+        display: block;
+    }
+
+    .vr-tarjeta {
+        padding: 1.2em 1em;
+    }
+
+    .vr-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8em;
+    }
+
+    .vr-nombre {
+        width: 100%;
+    }
+
+    .vr-dia {
+        padding: 1em;
+    }
+}

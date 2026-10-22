@@ -1,0 +1,210 @@
+/* Eliminar configuracion por defecto */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* fuente */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background-image: url("../img/index/banner.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    height: 100%;
+    width: 100%;
+}
+
+/* Estilo para el espacio por encima del fondo pero detrás de la caja que contiene los campos y botón*/
+#contenedor {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    background-color: #f4f5f7;
+    min-height: 100vh;
+    position: relative;
+    padding-top: 10%;
+    padding-bottom: 4em;
+}
+
+/* El estilo de la caja donde se encuentran los campos y el botón */
+
+#campos {
+    display: flex;
+    background-color: #ffffff;
+    padding: 1em 2.5em;
+    flex-direction: column;
+    width: 35em;
+    position: relative;
+    top: -50px;
+}
+
+#div {
+    color: red;
+}
+
+/* Este es el estilo del botón de iniciar sesión*/
+.boton {
+    background-color: #7ed957;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.9em 2.5em;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    margin: 1em;
+
+}
+
+/*El hover para cuando pases el mouse por arriba*/
+
+.boton:hover {
+    background-color: aquamarine;
+    color:#636363;
+}
+
+/* Este es el estilo de ambos campos que incluyen mail/contraseña y el input*/
+
+.campo-grupo {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    background-color: #c4d3e5;
+}
+
+/*Acá le cambiamos el estilo a donde el usuario introduce los datos*/
+
+#registro input[type="text"],
+#registro input[type="email"],
+#registro input[type="password"] {
+    border: none;
+    outline: none;
+    background-color: #b1bfd1;
+}
+
+/* Estilo aplicado a todo el body */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+/* MARQUEE :3*/
+
+
+.marquee {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.marquee--bottom {
+    bottom: 0;
+}
+
+.marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll 15s linear infinite;
+}
+
+.marquee--top .marquee__img {
+    height: 90px;
+    flex-shrink: 0;
+    display: block;
+}
+
+.marquee__group {
+    display: flex;
+}
+
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+
+
+
+
+/* MARQUEE 2 :O*/
+
+.marquee--top {
+    top: 0;
+}
+
+.marquee--top .marquee__track {
+    animation-direction: reverse;
+}
+
+
+
+
+/* ---------- Responsive ---------- */
+/* Este archivo tambien lo usa instructor/registrarseInstructor.html, */
+/* que comparte exactamente la misma estructura (#contenedor,        */
+/* #campos, .campo-grupo, .boton) mas un campo extra de "Codigo",    */
+/* asi que estas reglas responsive alcanzan para las dos paginas.    */
+
+/* Tablet: el 60% de ancho fijo empieza a quedar muy angosto para   */
+/* el formulario (35em), asi que le damos mas aire al contenedor.  */
+
+@media (max-width: 900px) {
+
+    #contenedor {
+        width: 85%;
+        padding-top: 8%;
+    }
+
+    #campos {
+        width: 100%;
+        max-width: 35em;
+        top: 0;
+    }
+}
+
+/* Celular: el ancho fijo en em de #campos y los margenes/paddings */
+/* pensados para escritorio ya no entran comodos en pantalla       */
+/* chica, asi que pasamos todo a porcentajes/valores mas chicos.   */
+
+@media (max-width: 640px) {
+
+    #contenedor {
+        width: 100%;
+        padding: 3em 1em 2em;
+    }
+
+    #campos {
+        width: 100%;
+        padding: 1em 1.2em;
+        top: 0;
+    }
+
+    .boton {
+        width: 100%;
+        margin: 0.6em 0 0;
+        padding: 0.8em 1.5em;
+        font-size: 16px;
+    }
+}

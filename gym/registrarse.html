@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="./css/registrarse.css">
+</head>
+<body>
+
+    <form id="registro">
+        <div id="contenedor">
+
+<!-- MARQUEE -->
+            <div class="marquee marquee--bottom">
+                <div class="marquee__track" id="marqueeTrack">
+                    <div class="marquee__group" id="marqueeGroup1"></div>
+                    <div class="marquee__group" id="marqueeGroup2"></div>
+                </div>
+            </div>
+<!-- MARQUEE -->
+
+            <div id="campos">
+                <div class="campo-grupo">
+                    <label class="campo" id="labelNombre" for="nombre"> </label>
+                    <input type="text" name="Nombre" id="Nombre" required>
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo" id="labelApellido" for="apellido"></label>
+                    <input type="text" name="Apellido" id="Apellido">
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo" id="labelMail" for="mail"></label>
+                    <input type="email" name="Mail" id="Mail" required>
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo" id="labelTelefono" for="Telefono"></label>
+                    <input type="text" name="Telefono" id="Telefono" >
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo" id="labelContraseña" for="contraseña"></label>
+                    <input type="password" name="Contraseña" id="Contraseña" required minlength="12">
+                </div>
+                <div class="campo-grupo">
+                    <label class="campo" id="labelConfContraseña" for="confContraseña"></label>
+                    <input type="password" name="ConfContraseña" id="ConfContraseña" required minlength="12">
+                </div>
+            </div>
+            <input type="submit" class="boton" value="Registrarse">
+    <a href="./php/volver.php" class="boton">Volver</a>
+<!-- MARQUEE -->
+            <div class="marquee marquee--top">
+                <div class="marquee__track" id="marqueeTrackTop">
+                    <div class="marquee__group" id="marqueeGroup3"></div>
+                    <div class="marquee__group" id="marqueeGroup4"></div>
+                </div>
+            </div>
+<!-- MARQUEE -->
+        </div>
+    </form>
+
+    <div id="div"></div>
+
+    <script src="./js/registrarse.js"></script>
+</body>
+</html>
